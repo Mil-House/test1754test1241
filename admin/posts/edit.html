@@ -1,0 +1,124 @@
+<?php
+// session_start(); У нас тут есть сессия которую можно убить потому что она есть в другом файле db.php которую мы сейчас подключим
+include "../../path.php";
+include "../../app/controllers/posts.php";
+?>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--==================== FAVICON ====================-->
+
+    <!--==================== REMIX ICONS ====================-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--==================== SWIPER CSS ====================-->
+    <!-- <link rel="stylesheet" href=""> -->
+
+    <!--==================== Bootstrap ====================-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+
+    <title>Website</title>
+</head>
+<body>
+<!--==================== HEADER ====================-->
+<?php include("../../app/include/header-admin.php"); ?>
+
+<div class="container">
+    <?php include("../../app/include/sidebar-admin.php"); ?>
+
+    <div class="posts col-9">
+        <div class="row title-table">
+            <h2>Редактирование записи</h2>
+        </div>
+        <div class="row add-post">
+            <div class="mb-12 col-12 col-md-12 err">
+                <!-- Вывод массива с ошибками -->
+                <?php include("../../app/helps/errorInfo.php"); ?>
+            </div>
+            <form action="edit.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?=$id; ?>"> <!-- добавили скрытое поле чтобы потом взять этот id -->
+                <div class="col mb-4">
+                    <input value="<?=$post['title']; ?>" name="title" type="text" class="form-control" placeholder="Title" aria-label="Название статьи">
+                </div>
+                <div class="col ">
+                    <label for="editor" class="form-label">Содержание записи</label>
+                    <textarea name="content" id="editor" class="form-control" rows="6"><?=$post['content']; ?></textarea>
+                </div>
+                <div class="input-group col mb-4 mt-4">
+                    <input name="img" type="file" class="form-control" id="inputGroupFile02">
+                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                </div>
+                <select name="topic" class="form-select mb-2" aria-label="Default select example">
+
+                    <?php foreach ($topics as $key => $topic): ?>
+                        <option value="<?=$topic['id']; ?>"><?=$topic['name'];?></option>
+                    <?php endforeach; ?>
+                </select>
+                <div class="form-check">
+                    <?php if (empty($publish) && $publish == 0 ): ?>
+                        <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Publish
+                        </label>
+                    <?php else: ?>
+                        <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked" checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Publish
+                        </label>
+                    <?php endif; ?>
+                </div>
+                <div class="col col-6">
+                    <button name="edit_post" class="btn btn-primary" type="submit">Сохранить запись</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--==================== FOOTER ====================-->
+<?php include("../../app/include/footer.php"); ?>
+
+
+<!--==================== HOME ====================->
+<section class="home section" id="home"></section>
+<--==================== ABOUT ====================->
+<section class="about section" id="about"></section>
+<--==================== SKILLS ====================->
+<section class="skills section" id="skills"></section>
+<--==================== QUALIFICATION ====================->
+<section class="qualification section"></section>
+<--==================== SERVICES ====================->
+<section class="services section" id="services"></section>
+<--==================== PORTFOLIO ====================->
+<section class="portfolio section" id="portfolio"></section>
+<--==================== PROJECT IN MIND ====================->
+<section class="project section"></section>
+<--==================== TESTIMONIAL ====================->
+<section class="testimonial section"></section>
+<--==================== CONTACT ME ====================->
+<section class="contact section" id="contact"></section>-->
+<!--==================== FOOTER ====================-->
+
+<!--==================== SCROLL TOP ====================-->
+
+<!--==================== BOOTSTRAP SWIPER JS ====================-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<!-- Добавление визуального редактора к текстовому полю админки | CDN Скрипт для интересного текста админа -->
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+
+<!--==================== MAIN JS ====================-->
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

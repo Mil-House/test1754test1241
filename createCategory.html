@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--==================== UNICONS ====================-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!--==================== SWIPER CSS ====================-->
+
+    <!--==================== BOOTSRAP CSS ====================-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet" href="assets/css/admin.css">
+
+    <!--==================== JQuery ====================-->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
+    crossorigin="anonymous"></script>
+
+    <title>Apartment Create</title>
+</head>
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header">
+        <!-- <a href="#" class="header__logo">Clay</a> old -->
+        <a href="/" class="header__logo">
+            <div>
+                <img src="assets/img/mhlarge.png" alt="MIL HOUSE">
+            </div>
+            
+            <div class="header__logo__brand">
+                <span>MIL</span>
+                <br>
+                <span>HOUSE</span>
+            </div>
+        </a>
+
+        <i class='bx bx-menu header__toggle' id="header-toggle"></i>
+
+        <nav class="nav" id="nav-menu">
+            <div class="nav__content bd-grid">
+                <a href="/" class="nav__perfil">
+                    <div class="nav__img">
+                        <img src="assets/img/mhlarge.png" alt="MIL HOUSE">
+                    </div>
+                    
+                    <div>
+                        <span class="nav__name">MIL</span>
+                        <span class="nav__name">HOUSE</span>
+                    </div>
+                </a>
+
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#" class="nav__link">Home</a></li> <!--active-->
+
+                        <li class="nav__item dropdown">
+                            <a href="#" class="nav__link dropdown__link">About <i class='bx bx-chevron-down dropdown__icon'></i></a>
+                                
+
+                            <ul class="dropdown__menu">
+                                <li class="dropdown__item"><a href="#" class="nav__link">About me</a></li>
+                                <li class="dropdown__item"><a href="#" class="nav__link">Location</a></li>
+                                <li class="dropdown__item"><a href="#" class="nav__link">Studies</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav__item"><a href="#" class="nav__link">Skills</a></li>
+
+                        <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
+
+                        <li class="nav__item dropdown">
+                            <a href="#" class="nav__link dropdown__link"><span><i class='bx bx-user'></i> Log In</span> <i class='bx bx-chevron-down dropdown__icon'></i></a>
+                                
+
+                            <ul class="dropdown__menu">
+                                <li class="dropdown__item"><a href="#" class="nav__link"><i class='bx bxs-key' ></i> Admin panel</a></li>
+                                <li class="dropdown__item"><a href="#" class="nav__link"><i class='bx bx-log-in' ></i> Register</a></li>
+                                <li class="dropdown__item"><a href="#" class="nav__link"><i class='bx bxs-log-out' ></i> Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!--==================== MAIN ====================-->
+    <!-- <main class="main"></main> -->
+
+
+
+    <!--==================== Dashboard Title ====================-->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2" style="margin: 0 auto;">Posts Dashboard</h1>
+        </div>
+    </main>    
+        
+
+    <!--==================== Dashboard Main Buttons ====================-->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+            <div class="btn-toolbar mb-2 mb-md-0" style="margin: 0 auto;">
+                <div class="btn-group me-2">
+                    <a href="">
+                        <button type="button" class="btn btn-sm btn-outline-secondary main__btn posts__btn">
+                            Posts
+                        </button>
+                    </a>
+                    <a href="">
+                        <button type="button" class="btn btn-sm btn-outline-secondary main__btn apart__btn">
+                            Apartments
+                        </button>
+                    </a>
+                    <a href="">
+                        <button type="button" class="btn btn-sm btn-outline-secondary main__btn users__btn">
+                            Users
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+
+
+
+    <!--==================== CREATE APARTMENT ====================-->
+    <main class="main">
+
+
+        <section class="content-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <h2 class="title -border" style="text-align: center; padding: 2rem 0;">Adding Apartment</h2>
+
+                        <form action="create.php" method="post">
+
+                            <div class="error__message">
+
+                            </div>
+
+                            <div class="apartment__name">
+                                <label>Apartment Name</label>
+                                <input name="name" value="phpname" type="text" class="form-control" placeholder="Apartment Name" aria-label="Apartment Name">
+                            </div>
+
+                            <div class="apartment__description">
+                                <label for="content" class="form-label">Apartment Description</label>
+                                <textarea name="description" class="form-control" id="content" rows="3" placeholder="Apartment Description"></textarea>
+                            </div>
+
+                            <div class="apartment__create">
+                                <button name="topic-create" class="btn btn-primary" type="submit">Create Apartment</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+    <!--==================== FOOTER ====================-->
+
+
+    <!--==================== SCROLL TOP ====================-->
+
+
+    <!-- <script>
+        $('#menu-btn').click(function(){
+            $('#menu').toggleClass("active");
+        })
+    </script> -->
+    
+
+    <!--==================== SWIPER JS ====================-->
+
+
+    <!--==================== MAIN JS ====================-->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

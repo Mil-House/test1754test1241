@@ -1,0 +1,124 @@
+<?php
+session_start();
+include "../../path.php";
+include "../../app/controllers/users.php";
+
+
+// Для того чтобы обычный пользователь не смог зайти без прав админа | Это я добавил
+if (!$_SESSION){header('location: ' . BASE_URL . 'log.php');}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--==================== FAVICON ====================-->
+
+    <!--==================== REMIX ICONS ====================-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--==================== SWIPER CSS ====================-->
+    <!-- <link rel="stylesheet" href=""> -->
+
+    <!--==================== Bootstrap ====================-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+
+    <title>Website</title>
+</head>
+<body>
+<!--==================== HEADER ====================-->
+<?php include("../../app/include/header-admin.php"); ?>
+
+<div class="container">
+    <?php include("../../app/include/sidebar-admin.php"); ?>
+
+        <div class="posts col-9">
+            <div class="button row">
+                <a href="<?php echo BASE_URL . "admin/users/create.php"; ?>" class="col-2 btn btn-success">Создать</a>
+                <span class="col-1"></span>
+                <a href="<?php echo BASE_URL . "admin/users/index.php"; ?>" class="col-3 btn btn-warning">Редактировать</a>
+            </div>
+            <div class="row title-table">
+                <h2>Создание пользователя</h2>
+            </div>
+
+            <div class="row add-post">
+                <div class="mb-12 col-12 col-md-12 err">
+                    <!-- Вывод массива с ошибками -->
+                    <?php include("../../app/helps/errorInfo.php"); ?>
+                </div>
+                <form action="create.php" method="post">
+                    <div class="col">
+                        <label for="formGroupExampleInput" class="form-label">Your login</label>
+                        <input name="login" value="<?=$login?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="enter your login...">
+                    </div>
+                    <div class="col">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input name="email" value="<?=$email?>" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter your email...">
+                    </div>
+                    <div class="col">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input name="pass-first" type="password" class="form-control" id="exampleInputPassword1" placeholder="enter your password...">
+                    </div>
+                    <div class="col">
+                        <label for="exampleInputPassword1" class="form-label">Repeat password</label>
+                        <input name="pass-second" type="password" class="form-control" id="exampleInputPassword2" placeholder="repeat your password...">
+                    </div>
+<!--                    <select class="form-select" aria-label="Default select example">-->
+<!--                        <option selected>User</option>-->
+<!--                        <option value="1">Admin</option>-->
+<!--                    </select>-->
+                    <input name="admin" class="form-check-input" value="1" type="checkbox" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Admin?
+                    </label>
+                    <div class="col">
+                        <button name="create-user" class="btn btn-primary" type="submit">Создать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--==================== FOOTER ====================-->
+<?php include("../../app/include/footer.php"); ?>
+
+
+<!--==================== HOME ====================->
+<section class="home section" id="home"></section>
+<--==================== ABOUT ====================->
+<section class="about section" id="about"></section>
+<--==================== SKILLS ====================->
+<section class="skills section" id="skills"></section>
+<--==================== QUALIFICATION ====================->
+<section class="qualification section"></section>
+<--==================== SERVICES ====================->
+<section class="services section" id="services"></section>
+<--==================== PORTFOLIO ====================->
+<section class="portfolio section" id="portfolio"></section>
+<--==================== PROJECT IN MIND ====================->
+<section class="project section"></section>
+<--==================== TESTIMONIAL ====================->
+<section class="testimonial section"></section>
+<--==================== CONTACT ME ====================->
+<section class="contact section" id="contact"></section>-->
+<!--==================== FOOTER ====================-->
+
+<!--==================== SCROLL TOP ====================-->
+
+<!--==================== BOOTSTRAP SWIPER JS ====================-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<!--==================== MAIN JS ====================-->
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

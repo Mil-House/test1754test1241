@@ -1,0 +1,98 @@
+<?php
+include("path.php");
+//include SITE_ROOT . "/app/database/db.php"; это нам уже не нужен тк через topics.php мы уже имеем доступ к db.php
+include ("app/controllers/topics.php"); // для отображения категорий
+
+//$post = selectOne('posts', ['id' => $_GET['post']]); можем удалить оно нам не нужно
+$post = selectPostFromPostsWithUsersOnSingle('posts', 'users', $_GET['post']);
+//tt($post);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--==================== FAVICON ====================-->
+
+  <!--==================== REMIX ICONS ====================-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!--==================== SWIPER CSS ====================-->
+  <!-- <link rel="stylesheet" href=""> -->
+  
+  <!--==================== Bootstrap ====================-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <!--==================== CSS ====================-->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <title>Single HTML</title>
+</head>
+<body>
+  <!--==================== HEADER ====================-->
+  <?php include("app/include/header.php"); ?>
+
+  <!--==================== MAIN ====================-->
+  <main class="main container">
+    <!--==================== POSTS ====================-->
+    <section class="content row">
+      <!-- Main content -->
+      <div class="main-content col-md-9 col-12">
+        <h2><?=$post['title'];?></h2>
+
+        <div class="single_post row">
+          <div class="img col-12">
+            <img src="<?=BASE_URL . 'assets/img/posts/' . $post['img'] ?>" alt="<?=$post['title'] ?>" class="img-thumbnail">
+          </div>
+          <div class="info">
+            <i class="ri-user-3-line"><?=$post['username'];?></i>
+            <i class="ri-calendar-line"><?=$post['created_date'];?></i>
+          </div>
+          <div class="single_post_text col-12">
+              <!--<h3><php //=$post['title'];></h3>-->
+              <p><?=$post['content'];?></p>
+          </div>
+        </div>
+
+      </div>
+      <!-- Sidebar content -->
+      <div class="sidebar col-md-3 col-12">
+
+        <div class="section search">
+          <h3>Search</h3>
+          <form action="/" method="post">
+            <input type="text" name="search-term" class="text-input" placeholder="Search something ...">
+          </form>
+        </div>
+
+        <div class="section topics">
+            <h3>Categories</h3>
+            <ul><!-- Мы все правильно сделали однако надо еще подтягивать файл topics.php подтягивать в include -->
+                <?php foreach ($topics as $key => $topic): ?>
+                <li>
+                    <a href="<?=BASE_URL . 'category.php?id=' . $topic['id'];?>"><?=$topic['name'];?></a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        
+      </div>
+
+    </section>
+  </main>
+
+  <!--==================== FOOTER ====================-->
+  <?php include("app/include/footer.php"); ?>
+
+  <!--==================== BOOTSTRAP SWIPER JS ====================-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  <!--==================== MAIN JS ====================-->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
