@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.white {
+  height: 100vh;
+}
+.white:before {
+  z-index: 1;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1vh;
+  background-image: linear-gradient(-180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+}
+.white:after {
+  z-index: 1000;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20vh;
+  background-image: linear-gradient(0deg, #EBEBEB 0%, rgba(235, 235, 235, 0) 100%);
+}
+
+.squares {
+  height: 100%; /*90%*/
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.square {
+  -webkit-animation: squares 9.5s linear infinite;
+          animation: squares 9.5s linear infinite;
+  align-self: flex-end;
+  width: 1em;
+  height: 1em;
+  transform: translateY(100%);
+  background: #ebebeb;
+}
+.square:nth-child(2) {
+  height: 1.5em;
+  width: 3em;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-duration: 17s;
+          animation-duration: 17s;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+.square:nth-child(3) {
+  height: 2em;
+  width: 1em;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+  -webkit-animation-duration: 8s;
+          animation-duration: 8s;
+  -webkit-filter: blur();
+  filter: blur();
+}
+.square:nth-child(4) {
+  height: 1em;
+  width: 1.5em;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+  -webkit-animation-duration: 13s;
+          animation-duration: 13s;
+}
+.square:nth-child(5) {
+  height: 1.25em;
+  width: 2em;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+  -webkit-animation-duration: 11s;
+          animation-duration: 11s;
+}
+.square:nth-child(6) {
+  height: 2.5em;
+  width: 2em;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+  -webkit-animation-duration: 9s;
+          animation-duration: 9s;
+}
+.square:nth-child(7) {
+  height: 5em;
+  width: 2em;
+  -webkit-filter: blur(2.5px);
+  filter: blur(2.5px);
+  -webkit-animation-duration: 12s;
+          animation-duration: 12s;
+}
+.square:nth-child(8) {
+  height: 1em;
+  width: 3em;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+  -webkit-filter: blur(6px);
+  filter: blur(6px);
+  -webkit-animation-duration: 18s;
+          animation-duration: 18s;
+}
+.square:nth-child(9) {
+  height: 1.5em;
+  width: 2em;
+  -webkit-filter: blur(0.5px);
+  filter: blur(0.5px);
+  -webkit-animation-duration: 9s;
+          animation-duration: 9s;
+}
+.square:nth-child(9) {
+  height: 3em;
+  width: 2.4em;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+  -webkit-filter: blur(0.5px);
+  filter: blur(0.5px);
+  -webkit-animation-duration: 12s;
+          animation-duration: 12s;
+}
+
+@-webkit-keyframes squares {
+  from {
+    transform: translateY(100%) rotate(-50deg);
+  }
+  to {
+    transform: translateY(calc(-100vh + -100%)) rotate(20deg);
+  }
+}
+
+@keyframes squares {
+  from {
+    transform: translateY(100%) rotate(-50deg);
+  }
+  to {
+    transform: translateY(calc(-100vh + -100%)) rotate(20deg);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .white:after{
+    margin-bottom: -48px;
+  }
+  .page-not-found{
+    z-index: 10;
+  }
+}
+
+/*I add this parameters%*/
+@media screen and (min-width: 767px){
+  .squares{
+    margin-top: -64px;
+  }
+}
+
+
+
+.page-not-found img{
+  /* margin-top: -120px; */
+  max-height: 300px;
+  /* background-color: rgba(255, 255, 255, 0.50); */
+
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.page-not-found{
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -60%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-not-found h1{
+  font-family: 'Poppins', sans-serif;
+  color: #3b3a39;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  text-align: center;
+  margin: 50px 0px 0px 0px;
+}
+
+.page-not-found p{
+  color: #808080;
+  font-size: 1rem;
+  max-width: 404px; /*60%*/
+  text-align: center;
+  margin: 5px;
+  font-weight: 300px;
+}
+
+.page-not-found p a{
+  color: var(--first-color);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.page-not-found button {
+  width: 140px;
+  height: 40px;
+  margin: 10px;
+  background-color: #2f2e41;
+  color: #ffffff;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  letter-spacing: 1px;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.page-not-found button:hover{
+  background-color: #635eff;
+  transition: all ease 0.2s;
+}
+
+@media screen and (max-width: 900px){
+  .page-not-found{
+    width: 100%;
+  }
+  .page-not-found img{
+    padding: 0 50px;
+  }
+  .page-not-found p{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .page-not-found img{
+    padding: 0 25px;
+  }
+  .page-not-found h1{
+    font-size: 1.4rem;
+  }
+  .page-not-found p{
+    width: 90%;
+  }
+}
